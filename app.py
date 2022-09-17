@@ -39,7 +39,7 @@ def re_check(txt: str) -> Any:
             print(f'Login: {item} - {error} - В логине должен быть как минимум один спецсимвол')
         else:
             good = f'{GREEN}Good !{WHITE}'
-            print(f'Login {item} {good} Логин соответствует требованиям !')
+            print(f'Login: {item} {good} Логин соответствует требованиям !')
 
 
 if __name__ == "__main__":
