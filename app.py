@@ -22,7 +22,7 @@ def main() -> None:
     name_re_check(t)
 
 
-# Проверка Regex всех возможных состояний состояний
+# Проверка Regex всех возможных состояний
 def name_re_check(txt: str) -> Any:
     for item in txt:
         error = f'{RED}Error{WHITE}'
