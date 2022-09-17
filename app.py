@@ -7,7 +7,7 @@ GREEN = '\033[0;92m'
 RED = '\033[1;31m'
 
 
-def check_names(text: dict) -> Any:
+def get_names(text: dict) -> Any:
     for item in text:
         res = item['login']
         yield res
@@ -16,11 +16,11 @@ def check_names(text: dict) -> Any:
 def main() -> None:
     with open('data.json', 'r', encoding='utf-8') as f:
         file = json.load(f)
-    t = check_names(file)
-    re_check(t)
+    t = get_names(file)
+    name_re_check(t)
 
 
-def re_check(txt: str) -> Any:
+def name_re_check(txt: str) -> Any:
     for item in txt:
         error = f'{RED}Error{WHITE}'
         if re.match(r"^[A-Z]{1}", item):
