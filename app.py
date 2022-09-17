@@ -2,6 +2,10 @@ import json
 import re
 from typing import Any
 
+WHITE = '\033[00m'
+GREEN = '\033[0;92m'
+RED = '\033[1;31m'
+
 
 def check_names(text: dict) -> Any:
     for item in text:
@@ -18,22 +22,24 @@ def main() -> None:
 
 def re_check(txt: str) -> Any:
     for item in txt:
+        error = f'{RED}Error{WHITE}'
         if re.match(r"^[A-Z]{1}", item):
-            print(f'Login: {item} - Error - Первая буква не может быть заглавной')
+            print(f'Login: {item} - {error} - Первая буква не может быть заглавной')
         elif re.match(r"^\d+$", item):
-            print(f'Login: {item} - Error - Логин не может состоять только из цифр')
+            print(f'Login: {item} - {error} - Логин не может состоять только из цифр')
         elif re.match(r"^[0-9]{1}.*", item):
-            print(f'Login: {item} - Error - Первая буква не может быть цифрой')
+            print(f'Login: {item} - {error} - Первая буква не может быть цифрой')
         elif re.match(r".*[@$!%*#?&]{1}$", item):
-            print(f'Login: {item} - Error - Последняя буква не может быть спецсимволом')
+            print(f'Login: {item} - {error} - Последняя буква не может быть спецсимволом')
         elif re.match(r"^(?!.*\d).*$", item):
-            print(f'Login: {item} - Error - В логине должна быть как минимум одна цифра')
+            print(f'Login: {item} - {error} - В логине должна быть как минимум одна цифра')
         elif re.match(r"^(?!.*[A-Z]).*$", item):
-            print(f'Login: {item} - Error - В логине должна быть как минимум одна заглавная буква')
+            print(f'Login: {item} - {error} - В логине должна быть как минимум одна заглавная буква')
         elif re.match(r"^(?!.*[@!$%*#?&]).*$", item):
-            print(f'Login: {item} - Error - В логине должен быть как минимум один спецсимвол')
+            print(f'Login: {item} - {error} - В логине должен быть как минимум один спецсимвол')
         else:
-            print(True)
+            good = f'{GREEN}Good !{WHITE}'
+            print(f'Login {item} {good} Логин соответствует требованиям !')
 
 
 if __name__ == "__main__":
