@@ -7,12 +7,14 @@ GREEN = '\033[0;92m'
 RED = '\033[1;31m'
 
 
+# Достаем имена
 def get_names(text: dict) -> Any:
     for item in text:
         res = item['login']
         yield res
 
 
+# Старт программы, вызываем нужные функции
 def main() -> None:
     with open('data.json', 'r', encoding='utf-8') as f:
         file = json.load(f)
@@ -20,6 +22,7 @@ def main() -> None:
     name_re_check(t)
 
 
+# Проверка Regex всех возможных состояний состояний
 def name_re_check(txt: str) -> Any:
     for item in txt:
         error = f'{RED}Error{WHITE}'
